@@ -16,6 +16,24 @@ public class Main {
 		return opcao;
 	}
 	
+	public static int[] pedirNumeros(Scanner input, int quantidade){
+		int[] numeros = new int[quantidade];
+		System.out.println("Insira os" + quantidade + " números: ");
+		for (int i = 0; i < quantidade; i++) {
+			numeros[i] = input.nextInt();
+		}
+		return numeros;
+	}
+	
+	public static double[] pedirNumerosDouble(Scanner input, int quantidadeSoma){
+		double[] numerosV = new double[quantidadeSoma];
+		System.out.println("Insira os" + quantidadeSoma + " números: ");
+		for (int i = 0; i < quantidadeSoma; i++) {
+			numerosV[i] = input.nextInt();
+		}
+		return numerosV;
+	}
+	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		MathHelper math = new MathHelper();
@@ -24,7 +42,6 @@ public class Main {
 		do {
 			opcao = enunciado(input);
 			input.nextLine(); // Tive de adicionar pois estava a dar erro porque pulava o pedido do nome
-			
 			switch (opcao) {
 				case 0:
 					System.out.println("Obrigado por utilizar o MathHelper");
@@ -45,43 +62,26 @@ public class Main {
 				case 3:
 					System.out.println("Quantos números deseja inserir: ");
 					int quantidade = input.nextInt();
-					int[] numeros = new int[quantidade];
-					System.out.println("Insira os numeros: ");
-					for (int i = 0; i < numeros.length; i++) {
-						numeros[i] = input.nextInt();
-					}
+					int[] numeros = pedirNumeros(input, quantidade);
 					System.out.println("O maior número é o " + math.maior(numeros));
 					break;
 				case 4:
 					System.out.println("Quantos números deseja inserir: ");
 					int quantidadeSoma = input.nextInt();
-					numeros = new int[quantidadeSoma];
-					System.out.println("Insira os números: ");
-					for (int i = 0; i < numeros.length; i++) {
-						numeros[i] = input.nextInt();
-					}
-					System.out.println("A soma total dos números é " + math.soma(numeros, input));
+					numeros = pedirNumeros(input, quantidadeSoma);
+					System.out.println("A soma total dos números é " + math.soma(numeros));
 					break;
 				case 5:
 					System.out.println("Quantos números deseja inserir: ");
 					int quantidadeMedia = input.nextInt();
-					double[] numerosV = new double[quantidadeMedia];
-					
-					System.out.println("Insira os números: ");
-					for (int i = 0; i < numerosV.length; i++) {
-						numerosV[i] = input.nextDouble();
-					}
-					
+					double[] numerosV = pedirNumerosDouble(input, quantidadeMedia);
 					System.out.println("A média dos números inseridos foi: " + math.media(numerosV));
 					break;
-				
 				default:
 					System.out.println("Erro, insira uma opção válida!");
 					break;
 			}
 		} while (opcao != 0);
-		
-		
 		input.close();
 	}
 }

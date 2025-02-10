@@ -14,7 +14,7 @@ public class MathHelper {
 		return numeros[numeros.length - 1];
 	}
 	
-	public int soma(int[] numeros, Scanner input){
+	public int soma(int[] numeros){
 		int somaTotal = 0;
 		for (int num : numeros){
 			somaTotal += num;
