@@ -29,9 +29,14 @@ public class Main {
 		double[] numerosV = new double[quantidadeSoma];
 		System.out.println("Insira os" + quantidadeSoma + " números: ");
 		for (int i = 0; i < quantidadeSoma; i++) {
-			numerosV[i] = input.nextInt();
+			numerosV[i] = input.nextDouble();
 		}
 		return numerosV;
+	}
+	
+	public static void despedida(){
+		System.out.println("Obrigado por utilizar o MathHelper");
+		System.out.println("Saindo...");
 	}
 	
 	public static void main(String[] args) {
@@ -44,8 +49,7 @@ public class Main {
 			input.nextLine(); // Tive de adicionar pois estava a dar erro porque pulava o pedido do nome
 			switch (opcao) {
 				case 0:
-					System.out.println("Obrigado por utilizar o MathHelper");
-					System.out.println("Saindo...");
+					despedida();
 					break;
 				case 1:
 					System.out.println("Insira o número: ");
